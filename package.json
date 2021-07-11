@@ -6,10 +6,10 @@
   "scripts": {
     "start": "nodemon app.js"
   },
-  "author": "Maryam Aljanabi",
+  "author": "Taranjeet",
   "license": "MIT",
   "dependencies": {
-    "admin-bro": "^2.3.1",
+    "admin-bro": "^2.9.0",
     "admin-bro-expressjs": "^2.0.5",
     "admin-bro-mongoose": "^0.5.2",
     "bcrypt-nodejs": "0.0.3",
@@ -34,7 +34,7 @@
     "mongoose-slug-updater": "^3.2.1",
     "morgan": "~1.9.1",
     "nodemailer": "^6.4.6",
-    "nodemon": "^2.0.4",
+    "nodemon": "^2.0.7",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "react": "^16.13.1",

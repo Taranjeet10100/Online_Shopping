@@ -1,5 +1,5 @@
 // Create a Stripe client.
-const stripe = Stripe("pk_test_Nw7zXh6zu9SXKrzk7KDxKUiV004Ly59ywq");
+const stripe = Stripe("pk_test_51J8ohuSIqXkCLqA9NUhfCIHYOyC3dphG0yMw1L6n0lMjQzCln5iBDSTUgHFODdHOvQTQxJe7BEc027FeAXcC4Hhr00BPXus9qq");
 
 // Create an instance of Elements.
 const elements = stripe.elements();
@@ -36,18 +36,22 @@ card.addEventListener("change", function (event) {
 // Handle form submission.
 const $form = $("#checkout-form");
 
-$form.submit(function (event) {
+$form.submit(async function (event) {
   event.preventDefault();
   $form.find("button").prop("disabled", true);
 
   const extraDetails = {
     name: $("#card-name").val(),
   };
+  console.log("card : ", card);
+  console.log("extra Details : ", extraDetails);
 
-  stripe.createToken(card, extraDetails).then(function (result) {
+  await stripe.createToken(card, extraDetails).then(function (result) {
     if (result.error) {
       $form.find("button").prop("disabled", false); // Re-enable submission
     } else {
+
+      console.log("result  :  ", result)
       // Send the token to your server.
       stripeTokenHandler(result.token);
     }

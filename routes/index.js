@@ -223,9 +223,10 @@ router.post("/checkout", middleware.isLoggedIn, async (req, res) => {
     return res.redirect("/shopping-cart");
   }
   const cart = await Cart.findById(req.session.cart._id);
+ 
   stripe.charges.create(
     {
-      amount: cart.totalCost * 100,
+      amount: Number(cart.totalCost) * 100,
       currency: "usd",
       source: req.body.stripeToken,
       description: "Test charge",
@@ -233,7 +234,7 @@ router.post("/checkout", middleware.isLoggedIn, async (req, res) => {
     function (err, charge) {
       if (err) {
         req.flash("error", err.message);
-        console.log(err);
+        console.log("error  : ",err);
         return res.redirect("/checkout");
       }
       const order = new Order({
